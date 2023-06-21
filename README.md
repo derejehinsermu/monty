@@ -8,6 +8,7 @@ Files containing Monty byte codes usually have the .m extension. Most of the ind
 Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account.
 
 TASKS
+
 0. Implement the push and pall opcodes
 1. Implement the pint opcode.
 2. Implement the pop opcode.
