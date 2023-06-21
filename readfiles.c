@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * open_file - check if file is accessible and can be opened. If not, throw an error
+ * access_file - check if file is accessible and can be opened. If not, throw an error
  * @fname: path to the montybytecode file
  */
 
