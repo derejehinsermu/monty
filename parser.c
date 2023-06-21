@@ -71,3 +71,45 @@ void exec_func(char *operator, stack_t **head, unsigned int line_tracker)
 		/* invalid opcode, error*/
 	}
 }
+/**
+ * free_all- free memory allocated to individual nodes
+ * 
+ */
+
+void free_all(void)
+{
+	stack_t *temp; /* initialize variable, will point to same node as head */
+
+	while (head != NULL)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+}
+
+/**
+ * add_node - add new node at the beginning
+ * @head: pointer to head node of list
+ * @n: data to be added inside new node
+ *
+ * Return: adress of new element, or NULL if it fails
+ */
+
+stack_t *add_node(stack_t **head, const int n)
+{
+	stack_t *newnode;
+
+	newnode = malloc(sizeof(dlistint_t));
+	if (newnode == NULL)
+		/* error */
+
+	newnode->n = n;
+	newnode->prev = NULL;
+	newnode->next = *head;
+	if (*head != NULL)
+		(*head)->prev = newnode;
+	*head = newnode;
+
+	return (newnode);
+}

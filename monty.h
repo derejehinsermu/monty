@@ -43,5 +43,10 @@ void open_file(FILE *fd);
 /* parse and execute */
 void exec_func(char *operator, stack_t **head, unsigned int line_tracker);
 int tokenize(char *str);
+void free_all(void);
+stack_t *add_node(stack_t **head, const int n);
+/* main */
+int main(int argc, char *argv[]);
+
 
 #endif /* MONTY_H */
