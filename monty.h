@@ -40,4 +40,8 @@ typedef struct instruction_s
 /*  read files */
 void access_file(const char *fname);
 void open_file(FILE *fd);
+/* parse and execute */
+void exec_func(char *operator, stack_t **head, unsigned int line_tracker);
+int tokenize(char *str);
+
 #endif /* MONTY_H */
