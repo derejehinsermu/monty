@@ -50,10 +50,10 @@ void _perror(int error_num, ...)
 			printf("L%u: can't add, stack too short\n", va_arg(ap, int));
 			break;
 		/*case 10:
-			printf();
-			break; */
+			* printf();
+			* break;*/
 	}
 	free_all();
 	va_end(ap);
-	EXIT(EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }

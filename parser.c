@@ -8,35 +8,47 @@
  */
 int tokenize(char *str)
 {
-	char *operator, *argument;
-	stack_t *head = NULL;
-	const char *delim = "\n ";
-	unsigned int line_counter = 0;
+    char *operator;
+    stack_t *head = NULL;
+    const char *delim = "\n ";
+    unsigned int line_counter = 0;
 
-	if (str == NULL)
-	{
-		_perror(4);
-	}
+    if (str == NULL)
+    {
+        _perror(4);
+    }
 
-	operator = strtok(str, delim);
-	if (operator == NULL)
-	{
-		return (-1);/* error */
-	}
-	while (operator != NULL)
-	{
-		line_counter++;
-		argument = strtok(NULL, delim); /* as is */
-	}
-	line_counter++;
+    operator = strtok(str, delim);
+    if (operator == NULL)
+    {
+        return (-1); /* Error */
+    }
 
-	exec_func(operator, argument, &head, line_counter);
+    while (operator != NULL)
+    {
+        line_counter++;
+        operator = strtok(NULL, delim);
+        /* As is */
+    }
 
-	return (0);
+    line_counter++;
+    if (strcmp(operator, "push") == 0)
+    {
+        operator = strtok(NULL, delim); /* Get the argument */
+        insert_stack(&head, line_counter, operator);
+    }
+    else if (strcmp(operator, "pall") == 0)
+    {
+        display_stack(&head, line_counter);
+    }
+
+    exec_func(operator, &head, line_counter);
+
+    return (0);
 }
 
 /**
- * exec_func - find matching function acc to provided opcode and call e function
+ * exec_func - find matching function according to provided opcode and call the function
  * @operator: holds first token extracted from str above which are opcodes
  * @head: double pointer to head node
  * @line_tracker: keep track of line number
@@ -44,48 +56,49 @@ int tokenize(char *str)
  */
 void exec_func(char *operator, stack_t **head, unsigned int line_tracker)
 {
-	int i;
-	int found = 0; /* zero for false or no match yet */
+    int i;
+    int found = 0; /* zero for false or no match yet */
 
-	instruction_t f_arr[] = {
-		{"push", insert_stack},
-		{"pall", display_stack},
-		{"pint", print_stacktop},
-		{"pop", delete_stack},
-		{"swap", swap_stack},
-		{"add", add_two},
-		{"nop", do_nothing},
-		{NULL, NULL},
-	};
+    instruction_t f_arr[] = {
+        {"push", insert_stack},
+        {"pall", display_stack},
+        {"pint", print_stacktop},
+        {"pop", delete_stack},
+        {"swap", swap_stack},
+        {"add", add_two},
+        {"nop", do_nothing},
+        {NULL, NULL},
+    };
 
-	for (i = 0; f_arr[i].opcode != NULL; i++)
-	{
-		if(strcmp(operator, f_arr[i].opcode) == 0) /*found function */
-		{
-			f_arr[i].f(head, line_tracker);
-			found = 1;
-		}
-	}
-	if (found == 0) /* no match found */
-	{
-		_perror(3, line_tracker, opcode);/* not so sure */
-	}
+    for (i = 0; f_arr[i].opcode != NULL; i++)
+    {
+        if (strcmp(operator, f_arr[i].opcode) == 0) /*found function */
+        {
+            f_arr[i].f(head, line_tracker);
+            found = 1;
+        }
+    }
+    if (found == 0) /* no match found */
+    {
+        _perror(3, line_tracker, operator); /* not so sure */
+    }
 }
+
 /**
  * free_all- free memory allocated to individual nodes
- * 
+ *
  */
 
 void free_all(void)
 {
-	stack_t *temp; /* initialize variable, will point to same node as head */
+    stack_t *temp; /* initialize variable, will point to same node as head */
 
-	while (head != NULL)
-	{
-		temp = head;
-		head = head->next;
-		free(temp);
-	}
+    while (head != NULL)
+    {
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
 }
 
 /**
@@ -93,23 +106,24 @@ void free_all(void)
  * @head: pointer to head node of list
  * @n: data to be added inside new node
  *
- * Return: adress of new element, or NULL if it fails
+ * Return: address of new element, or NULL if it fails
  */
 
 stack_t *add_node(stack_t **head, const int n)
 {
-	stack_t *newnode;
+    stack_t *newnode;
 
-	newnode = malloc(sizeof(dlistint_t));
-	if (newnode == NULL)
-		/_perror(4);
+    newnode = malloc(sizeof(stack_t));
+    if (newnode == NULL)
+        _perror(4);
 
-	newnode->n = n;
-	newnode->prev = NULL;
-	newnode->next = *head;
-	if (*head != NULL)
-		(*head)->prev = newnode;
-	*head = newnode;
+    newnode->n = n;
+    newnode->prev = NULL;
+    newnode->next = *head;
+    if (*head != NULL)
+        (*head)->prev = newnode;
+    *head = newnode;
 
-	return (newnode);
+    return (newnode);
 }
+

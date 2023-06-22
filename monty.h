@@ -38,6 +38,10 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void insert_stack(stack_t **stack, unsigned int line_number, char *argument);
+int is_number(const char *str);
+void display_stack(stack_t **stack, unsigned int line_number);
+
 /*  read files */
 void access_file(const char *fname);
 void open_file(FILE *fd);
