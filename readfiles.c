@@ -41,8 +41,7 @@ void open_file(FILE *fd)
 	ssize_t nread; /* store characters/bytes read */
 
 	/* use getline instead of read; it extracts each line not the whole file */
-	nread = getline(&lineptr, &n, fd);
-	while (nread != -1)
+	while ((nread = getline(&lineptr, &n, fd)) == -1)
 	{
 		/* replace NULL with head and 0 with linetracker if needed */
 		exec_func(lineptr, NULL, 0);/* execute string */

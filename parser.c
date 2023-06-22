@@ -26,20 +26,17 @@ int tokenize(char *str)
         operator = strtok(NULL, delim);
         /* As is */
     }
-    if (operator != NULL)
+    line_counter++;
+    if (strcmp(operator, "push") == 0)
     {
-	    line_counter++;
-	    if (strcmp(operator, "push") == 0)
-	    {
-		    operator = strtok(NULL, delim); /* Get the argument */
-		    insert_stack(&head, line_counter);
-	    }
-	    else if (strcmp(operator, "pall") == 0)
-	    {
-		    display_stack(&head, line_counter);
-	    }
-	    exec_func(operator, &head, line_counter);
+	    operator = strtok(NULL, delim); /* Get the argument */
+	    insert_stack(&head, line_counter);
     }
+    else if (strcmp(operator, "pall") == 0)
+    {
+	    display_stack(&head, line_counter);
+    }
+    exec_func(operator, &head, line_counter);
     return (0);
 }
 
@@ -88,7 +85,8 @@ void exec_func(char *operator, stack_t **head, unsigned int line_tracker)
 
 void free_all(void)
 {
-    stack_t *temp, *head; /* initialize variable, will point to same node as head */
+    stack_t *temp;
+    stack_t *head = NULL; /* initialize variable, will point to same node as head */
 
     while (head != NULL)
     {
