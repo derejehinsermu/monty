@@ -8,7 +8,7 @@
  *
  * Return: void
  */
-void insert_stack(stack_t **stack, unsigned int line_number, char *argument)
+void insert_stack(char *argument, stack_t **stack, unsigned int line_number)
 {
 	int value;
 	
