@@ -49,7 +49,7 @@ void open_file(FILE *fd)
 		/*printf("Readline%s\n", lineptr);*/
 		line_counter++;
 		argument = strtok(lineptr, delim);
-		if (argument != NULL || argument[0] != '#')
+		if (argument != NULL)
 		{
 			exec_func(argument, &head, line_counter);
 		}
