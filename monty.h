@@ -41,7 +41,8 @@ typedef struct instruction_s
 void insert_stack(stack_t **stack, unsigned int line_number);
 int is_number(const char *str);
 void display_stack(stack_t **stack, unsigned int line_number);
-
+void print_stacktop(stack_t **head, unsigned int line_number);
+void delete_stack(stack_t **head, unsigned int line_number);
 /*  read files */
 void access_file(const char *fname);
 void open_file(FILE *fd);
