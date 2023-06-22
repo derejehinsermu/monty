@@ -11,16 +11,16 @@ void access_file(const char *fname)
 
 	if (fname == NULL)
 	{
-		/* error opening file */
+		_perror(2, fname);
 	}
 	if (access(fname, F_OK) != 0)
 	{
-		/* failure accesing file; error */
+		_perror(2, fname);
 	}	
 	fd = fopen(fname, "r");
 	if (fd == NULL)
 	{
-		/* error opening */
+		_perror(2, fname);
 	}
 	else
 	{

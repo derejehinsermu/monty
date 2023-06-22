@@ -15,13 +15,13 @@ int tokenize(char *str)
 
 	if (str == NULL)
 	{
-		/* string is empty, error */
+		_perror(4);
 	}
 
 	operator = strtok(str, delim);
 	if (operator == NULL)
 	{
-		return (NULL);/* error */
+		return (-1);/* error */
 	}
 	while (operator != NULL)
 	{
@@ -68,7 +68,7 @@ void exec_func(char *operator, stack_t **head, unsigned int line_tracker)
 	}
 	if (found == 0) /* no match found */
 	{
-		/* invalid opcode, error*/
+		_perror(3, line_tracker, opcode);/* not so sure */
 	}
 }
 /**
@@ -102,7 +102,7 @@ stack_t *add_node(stack_t **head, const int n)
 
 	newnode = malloc(sizeof(dlistint_t));
 	if (newnode == NULL)
-		/* error */
+		/_perror(4);
 
 	newnode->n = n;
 	newnode->prev = NULL;

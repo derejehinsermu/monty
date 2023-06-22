@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	if (argc != 2)
 	{
-		/* error */
+		_perror(1);
 	}
 	access_file(argv[1]);
 	free_all();
