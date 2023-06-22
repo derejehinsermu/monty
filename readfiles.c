@@ -26,9 +26,8 @@ void access_file(const char *fname)
 	else
 	{
 		open_file(fd);
+		fclose(fd);
 	}
-
-	fclose(fd);
 }
 
 /**
@@ -43,14 +42,13 @@ void open_file(FILE *fd)
 
 	/* use getline instead of read; it extracts each line not the whole file */
 	nread = getline(&lineptr, &n, fd);
-	if (nread < 0)
-	{
-		free(lineptr); /* couldn't read file */
-	}
 	while (nread != -1)
 	{
 		/* replace NULL with head and 0 with linetracker if needed */
 		exec_func(lineptr, NULL, 0);/* execute string */
 	}
-	free(lineptr);
+	if (nread == -1 && lineptr != NULL)
+	{
+		free(lineptr);
+	}
 }
