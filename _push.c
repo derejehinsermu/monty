@@ -10,15 +10,14 @@
  */
 void insert_stack(stack_t **stack, unsigned int line_number, char *argument)
 {
-    int value;
-
-    if (argument == NULL || !is_number(argument))
-    {
-        _perror(5, line_number);
-    }
-
-    value = atoi(argument);
-    add_node(stack, value);
+	int value;
+	
+	if (argument == NULL || !is_number(argument))
+	{
+		_perror(5, line_number);
+	}
+	value = atoi(argument);
+	add_node(stack, value);
 }
 
 /**
@@ -29,21 +28,21 @@ void insert_stack(stack_t **stack, unsigned int line_number, char *argument)
  */
 int is_number(const char *str)
 {
-    if (str == NULL || *str == '\0')
-        return 0;
-
-    int i = 0;
-
-    if (str[0] == '-')
-        i++;
-
-    for (; str[i] != '\0'; i++)
-    {
-        if (!isdigit(str[i]))
-            return 0;
-    }
-
-    return 1;
+	int i;
+	
+	if (str == NULL || *str == '\0')
+		return 0;
+	
+	i = 0;
+	if (str[0] == '-')
+		i++;
+	
+	for (; str[i] != '\0'; i++)
+	{
+		if (!isdigit(str[i]))
+			return 0;
+	}
+	return 1;
 }
 
 /**
@@ -55,13 +54,12 @@ int is_number(const char *str)
  */
 void display_stack(stack_t **stack, unsigned int line_number)
 {
-    stack_t *current = *stack;
-
-    (void)line_number; /* Unused parameter */
-
-    while (current != NULL)
-    {
-        printf("%d\n", current->n);
-        current = current->next;
-    }
+	stack_t *current = *stack;
+	(void)line_number; /* Unused parameter */
+	
+	while (current != NULL)
+	{
+		printf("%d\n", current->n);
+		current = current->next;
+	}
 }

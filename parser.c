@@ -62,11 +62,11 @@ void exec_func(char *operator, stack_t **head, unsigned int line_tracker)
     instruction_t f_arr[] = {
         {"push", insert_stack},
         {"pall", display_stack},
-        {"pint", print_stacktop},
+       /* {"pint", print_stacktop},
         {"pop", delete_stack},
         {"swap", swap_stack},
         {"add", add_two},
-        {"nop", do_nothing},
+        {"nop", do_nothing},*/
         {NULL, NULL},
     };
 
@@ -91,7 +91,7 @@ void exec_func(char *operator, stack_t **head, unsigned int line_tracker)
 
 void free_all(void)
 {
-    stack_t *temp; /* initialize variable, will point to same node as head */
+    stack_t *temp, *head; /* initialize variable, will point to same node as head */
 
     while (head != NULL)
     {
