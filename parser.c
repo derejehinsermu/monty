@@ -16,6 +16,8 @@ int tokenize(char *str)
 	if (str == NULL)
 		_perror(4);
 	operator = strtok(str, delim);
+	if (operator == NULL)
+		return (0);
 	while (operator != NULL)
 	{
 		argument = strtok(NULL, delim);
