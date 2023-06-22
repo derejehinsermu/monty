@@ -14,7 +14,11 @@ int tokenize(char *str)
 	unsigned int line_counter = 0;
 
 	if (str == NULL)
+	{
 		_perror(4);
+		free_all();
+                exit(EXIT_FAILURE);
+	}
 	operator = strtok(str, delim);
 	if (operator == NULL)
 		return (0);

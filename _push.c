@@ -57,12 +57,7 @@ int is_number(const char *str)
  */
 void display_stack(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current;
-
-	if (stack == NULL)
-		return;
-
-	current = *stack;
+	stack_t *current = *stack;
 
 	(void) line_number;
 	while (current != NULL)
