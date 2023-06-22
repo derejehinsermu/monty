@@ -34,7 +34,6 @@ int tokenize(char *str)
 	    }
 	    /*argument = strtok(NULL, delim);*/
     }
-    printf("Found opcode%s 2%s\n", argument, operator);
     exec_func(argument, &head, line_counter);
 
     return (0);
@@ -67,7 +66,6 @@ void exec_func(char *operator, stack_t **head, unsigned int line_tracker)
     {
         if (strcmp(operator, f_arr[i].opcode) == 0) /*found function */
         {
-		printf("Executing op: %s\n", operator);
 		f_arr[i].f(head, line_tracker);
 		found = 1;
 		break;
