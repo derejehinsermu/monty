@@ -40,8 +40,11 @@ typedef struct instruction_s
 
 void insert_stack(stack_t **stack, unsigned int line_number);
 int is_number(const char *str);
+/* disply stack*/
 void display_stack(stack_t **stack, unsigned int line_number);
+/* print stack from top*/
 void print_stacktop(stack_t **head, unsigned int line_number);
+/*delete stack */
 void delete_stack(stack_t **head, unsigned int line_number);
 /*  read files */
 void access_file(const char *fname);
