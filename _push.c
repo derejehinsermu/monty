@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * _push - Pushes an element to the stack
+ *  insert_stack- Pushes an element to the stack
  * @stack: Double pointer to the stack
  * @line_number: Line number in the file
  * @argument: Argument to be pushed to the stack
@@ -46,7 +46,7 @@ int is_number(const char *str)
 }
 
 /**
- * pall - Prints all the values on the stack
+ * display_stack - Prints all the values on the stack
  * @stack: Double pointer to the stack
  * @line_number: Line number in the file
  *
