@@ -41,10 +41,12 @@ void open_file(FILE *fd)
 	ssize_t nread; /* store characters/bytes read */
 
 	/* use getline instead of read; it extracts each line not the whole file */
-	while ((nread = getline(&lineptr, &n, fd)) == -1)
+	while ((nread = getline(&lineptr, &n, fd)) != -1)
 	{
+		printf("Readline%s\n", lineptr);
 		/* replace NULL with head and 0 with linetracker if needed */
-		exec_func(lineptr, NULL, 0);/* execute string */
+		exec_func(lineptr, NULL, 0);
+		printf("After execution");
 	}
 	if (nread == -1 && lineptr != NULL)
 	{

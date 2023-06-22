@@ -8,7 +8,7 @@
  */
 int tokenize(char *str)
 {
-    char *operator;
+    char *operator, *argument;
     stack_t *head = NULL;
     const char *delim = "\n ";
     unsigned int line_counter = 0;
@@ -17,26 +17,26 @@ int tokenize(char *str)
         _perror(4);
 
     operator = strtok(str, delim);
-    if (operator == NULL)
-        return (-1); /* Error */
+    /*if (operator == NULL)
+        return (NULL);  Error */
 
     while (operator != NULL)
     {
-        line_counter++;
-        operator = strtok(NULL, delim);
-        /* As is */
+	    argument = strtok(NULL, delim);
+	    if (strcmp(operator, "push") == 0)
+	    {
+	    	/*argument = strtok(NULL, delim); Get the argument */
+	    	insert_stack(&head, line_counter);
+	    }
+	    else if (strcmp(operator, "pall") == 0)
+	    {
+	    	display_stack(&head, line_counter);
+	    }
+	    /*argument = strtok(NULL, delim);*/
     }
-    line_counter++;
-    if (strcmp(operator, "push") == 0)
-    {
-	    operator = strtok(NULL, delim); /* Get the argument */
-	    insert_stack(&head, line_counter);
-    }
-    else if (strcmp(operator, "pall") == 0)
-    {
-	    display_stack(&head, line_counter);
-    }
-    exec_func(operator, &head, line_counter);
+    printf("Found opcode%s 2%s\n", argument, operator);
+    exec_func(argument, &head, line_counter);
+
     return (0);
 }
 
@@ -67,9 +67,10 @@ void exec_func(char *operator, stack_t **head, unsigned int line_tracker)
     {
         if (strcmp(operator, f_arr[i].opcode) == 0) /*found function */
         {
-            f_arr[i].f(head, line_tracker);
-            found = 1;
-	    break;
+		printf("Executing op: %s\n", operator);
+		f_arr[i].f(head, line_tracker);
+		found = 1;
+		break;
         }
     }
     if (found == 0) /* no match found */
