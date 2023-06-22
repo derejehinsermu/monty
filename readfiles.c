@@ -14,7 +14,7 @@ void access_file(const char *fname)
 	{
 		_perror(2, fname);
 	}
-	if (access(fname, F_OK) == -1)
+	if (access(fname, F_OK) != 0)
 	{
 		_perror(2, fname);
 	}
@@ -23,7 +23,10 @@ void access_file(const char *fname)
 	{
 		_perror(2, fname);
 	}
-	open_file(fd);
+	else
+	{
+		open_file(fd);
+	}
 
 	fclose(fd);
 }
