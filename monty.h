@@ -58,5 +58,9 @@ stack_t *add_node(stack_t **head, const int n);
 int main(int argc, char *argv[]);
 /* handle errors */
 void _perror(int error_num, ...);
+/* operatins */
+void do_nothing(stack_t **stack, unsigned int line_number);
+void add_two(stack_t **stack, unsigned int line_number);
+void swap_stack(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

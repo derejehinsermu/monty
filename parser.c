@@ -35,6 +35,18 @@ int tokenize(char *str)
 		{
 			delete_stack(&head, line_counter);
 		}
+		else if (strcmp(operator, "swap") == 0)
+		{
+			swap_stack(&head, line_counter);
+		}
+		else if (strcmp(operator, "add") == 0)
+                {
+                        add_two(&head, line_counter);
+                }
+                else if (strcmp(operator, "nop") == 0)
+                {
+                        do_nothing(&head, line_counter);
+                }
 	}
 	exec_func(argument, &head, line_counter);
 	return (0);
@@ -56,9 +68,9 @@ void exec_func(char *operator, stack_t **head, unsigned int line_tracker)
 		{"pall", display_stack},
 		{"pint", print_stacktop},
 		{"pop", delete_stack},
-		/*{"swap", swap_stack},
+		{"swap", swap_stack},
 		{"add", add_two},
-		{"nop", do_nothing},*/
+		{"nop", do_nothing},
 		{NULL, NULL},
 	};
 	for (i = 0; f_arr[i].opcode != NULL; i++)

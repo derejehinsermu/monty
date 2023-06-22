@@ -9,7 +9,7 @@
  */
 void print_stacktop(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL)
+	if (*stack == NULL || stack == NULL)
 	{
 		_perror(6, line_number);
 	}
