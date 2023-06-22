@@ -8,9 +8,13 @@
  *
  * Return: void
  */
-void insert_stack(char *argument, stack_t **stack, unsigned int line_number)
+void insert_stack(stack_t **stack, unsigned int line_number)
 {
 	int value;
+	char *argument;
+	char *delim = "\n ";
+
+	argument = strtok(NULL, delim);
 	
 	if (argument == NULL || !is_number(argument))
 	{

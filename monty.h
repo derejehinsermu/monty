@@ -38,7 +38,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void insert_stack(stack_t **stack, unsigned int line_number, char *argument);
+void insert_stack(stack_t **stack, unsigned int line_number);
 int is_number(const char *str);
 void display_stack(stack_t **stack, unsigned int line_number);
 
@@ -54,6 +54,5 @@ stack_t *add_node(stack_t **head, const int n);
 int main(int argc, char *argv[]);
 /* handle errors */
 void _perror(int error_num, ...);
-
 
 #endif /* MONTY_H */

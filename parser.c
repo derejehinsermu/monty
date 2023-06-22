@@ -35,7 +35,7 @@ int tokenize(char *str)
     if (strcmp(operator, "push") == 0)
     {
         operator = strtok(NULL, delim); /* Get the argument */
-        insert_stack(&head, line_counter, operator);
+        insert_stack(&head, line_counter);
     }
     else if (strcmp(operator, "pall") == 0)
     {
