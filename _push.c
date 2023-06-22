@@ -1,10 +1,9 @@
 #include "monty.h"
 
 /**
- *  insert_stack- Pushes an element to the stack
+ * insert_stack- Pushes an element to the stack
  * @stack: Double pointer to the stack
  * @line_number: Line number in the file
- * @argument: Argument to be pushed to the stack
  *
  * Return: void
  */
@@ -15,7 +14,7 @@ void insert_stack(stack_t **stack, unsigned int line_number)
 	char *delim = "\n ";
 
 	argument = strtok(NULL, delim);
-	
+
 	if (argument == NULL || !is_number(argument))
 	{
 		_perror(5, line_number);
@@ -33,20 +32,20 @@ void insert_stack(stack_t **stack, unsigned int line_number)
 int is_number(const char *str)
 {
 	int i;
-	
+
 	if (str == NULL || *str == '\0')
-		return 0;
-	
+		return (0);
 	i = 0;
 	if (str[0] == '-')
 		i++;
-	
+	if (str[i] == '\0')
+		return (0);
 	for (; str[i] != '\0'; i++)
 	{
 		if (!isdigit(str[i]))
-			return 0;
+			return (0);
 	}
-	return 1;
+	return (1);
 }
 
 /**
@@ -59,8 +58,7 @@ int is_number(const char *str)
 void display_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
-	(void)line_number; /* Unused parameter */
-	
+	(void)line_number;
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
