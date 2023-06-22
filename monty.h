@@ -51,7 +51,7 @@ int tokenize(char *str);
 void free_all(void);
 stack_t *add_node(stack_t **head, const int n);
 /* main */
-int main(int argc, char *argv[]);
+int main(int argc, char **argv);
 /* handle errors */
 void _perror(int error_num, ...);
 

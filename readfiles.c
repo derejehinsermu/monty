@@ -14,19 +14,17 @@ void access_file(const char *fname)
 	{
 		_perror(2, fname);
 	}
-	if (access(fname, F_OK) != 0)
+	if (access(fname, F_OK) == -1)
 	{
 		_perror(2, fname);
-	}	
+	}
 	fd = fopen(fname, "r");
 	if (fd == NULL)
 	{
 		_perror(2, fname);
 	}
-	else
-	{
-		open_file(fd);
-	}
+	open_file(fd);
+
 	fclose(fd);
 }
 

@@ -124,6 +124,6 @@ stack_t *add_node(stack_t **head, const int n)
         (*head)->prev = newnode;
     *head = newnode;
 
-    return (newnode);
+    return (*head);
 }
 
