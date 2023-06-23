@@ -40,7 +40,7 @@ void open_file(FILE *fd)
 	char *delim = "\n\t ";
 	size_t n = 0;
 	stack_t *head = NULL;
-	unsigned int line_counter = 1;
+	unsigned int line_counter = 00;
 	ssize_t nread; /* store characters/bytes read */
 
 	/* use getline instead of read; it extracts each line not the whole file */
