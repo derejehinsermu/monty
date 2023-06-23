@@ -14,10 +14,7 @@ void insert_stack(stack_t **stack, unsigned int line_number)
 	char *delim = "\n ";
 
 	argument = strtok(NULL, delim);
-	if (argument == NULL)
-		return;
-
-	if (!is_number(argument))
+	if (argument == NULL || !is_number(argument))
 	{
 		_perror(5, line_number);
 	}
