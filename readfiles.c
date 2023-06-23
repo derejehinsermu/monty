@@ -52,8 +52,9 @@ void open_file(FILE *fd)
 			exec_func(argument, &head, line_counter);
 		}
 	}
-	if (nread == -1 && lineptr != NULL)
+	if (nread == -1)
 	{
 		free(lineptr);
+		exit(0);
 	}
 }
