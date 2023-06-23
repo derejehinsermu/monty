@@ -37,7 +37,7 @@ void access_file(const char *fname)
 void open_file(FILE *fd)
 {
 	char *lineptr = NULL, *argument = NULL;
-	char *delim = "\n ";
+	char *delim = "\n\t ";
 	size_t n = 0;
 	stack_t *head = NULL;
 	unsigned int line_counter = 0;

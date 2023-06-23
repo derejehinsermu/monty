@@ -10,7 +10,7 @@ int tokenize(char *str)
 {
 	char *operator, *argument;
 	stack_t *head = NULL;
-	const char *delim = "\n ";
+	const char *delim = "\n\t ";
 	unsigned int line_counter = 0;
 
 	if (str == NULL)
