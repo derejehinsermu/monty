@@ -55,6 +55,6 @@ void open_file(FILE *fd)
 	if (nread == -1)
 	{
 		free(lineptr);
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
 }
