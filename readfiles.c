@@ -12,22 +12,16 @@ void access_file(const char *fname)
 
 	if (fname == NULL)
 	{
-		_perror(2, fname);
-		free_all();
-		exit(EXIT_FAILURE);
+		_perror(4);
 	}
 	if (access(fname, F_OK) != 0)
 	{
 		_perror(2, fname);
-		free_all();
-                exit(EXIT_FAILURE);
 	}
 	fd = fopen(fname, "r");
 	if (fd == NULL)
 	{
 		_perror(2, fname);
-		free_all();
-                exit(EXIT_FAILURE);
 	}
 	else
 	{
