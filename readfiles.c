@@ -55,8 +55,9 @@ void open_file(FILE *fd)
 		}
 		/*printf("After execution");*/
 	}
-	if (nread == -1 && lineptr != NULL)
+	/*if (nread == -1 && lineptr != NULL)
 	{
 		free(lineptr);
-	}
+	}*/
+	free(lineptr);
 }
