@@ -28,26 +28,26 @@ void _perror(int error_num, ...)
 			fprintf(stderr, "Error: Can't open file %s\n", va_arg(ap, const char *));
 			break;
 		case 3:
-			fprintf(stderr, "L%u: unknown instruction %s\n", va_arg(ap, int),
+			fprintf(stderr, "L%d: unknown instruction %s\n", va_arg(ap, int),
 					va_arg(ap, const char *));
 			break;
 		case 4:
 			fprintf(stderr, "Error: malloc failed\n");
 			break;
 		case 5:
-			fprintf(stderr, "L%u: usage: push integer\n", va_arg(ap, int));
+			fprintf(stderr, "L%d: usage: push integer\n", va_arg(ap, int));
 			break;
 		case 6:
-			fprintf(stderr, "L%u: can't pint, stack empty\n", va_arg(ap, int));
+			fprintf(stderr, "L%d: can't pint, stack empty\n", va_arg(ap, int));
 			break;
 		case 7:
-			fprintf(stderr, "L%u: can't pop an empty stack\n", va_arg(ap, int));
+			fprintf(stderr, "L%d: can't pop an empty stack\n", va_arg(ap, int));
 			break;
 		case 8:
-			fprintf(stderr, "L%u: can't swap, stack too short\n", va_arg(ap, int));
+			fprintf(stderr, "L%d: can't swap, stack too short\n", va_arg(ap, int));
 			break;
 		case 9:
-			fprintf(stderr, "L%u: can't add, stack too short\n", va_arg(ap, int));
+			fprintf(stderr, "L%d: can't add, stack too short\n", va_arg(ap, int));
 			break;
 		/*case 10:
 			* printf();

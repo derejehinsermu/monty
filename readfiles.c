@@ -43,21 +43,17 @@ void open_file(FILE *fd)
 	unsigned int line_counter = 00;
 	ssize_t nread; /* store characters/bytes read */
 
-	/* use getline instead of read; it extracts each line not the whole file */
 	while ((nread = getline(&lineptr, &n, fd)) != -1)
 	{
-		/*printf("Readline%s\n", lineptr);*/
 		line_counter++;
 		argument = strtok(lineptr, delim);
 		if (argument != NULL)
 		{
 			exec_func(argument, &head, line_counter);
 		}
-		/*printf("After execution");*/
 	}
-	/*if (nread == -1 && lineptr != NULL)
+	if (nread == -1 && lineptr != NULL)
 	{
 		free(lineptr);
-	}*/
-	free(lineptr);
+	}
 }
